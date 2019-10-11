@@ -2,7 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const weather = require('openweather-apis');
 
 /* CONFIGURE WEATHER*/
-weather.setLang('fi'); //Language
+weather.setLang('en'); //Language
 
 weather.setCity('Helsinki'); //City
 
