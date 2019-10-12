@@ -10,7 +10,7 @@ I have a working bot in telegram with this code. You can go to chat with it in a
 You must install Node.JS before we start.
 
 
-```bash
+```shell
 apt install nodejs 
 apt install npm
 
@@ -19,7 +19,7 @@ apt install npm
 Install dependencies.
 
 
-```bash
+```sh
 npm install openweather-apis
 npm install node-telegram-bot-api
 
