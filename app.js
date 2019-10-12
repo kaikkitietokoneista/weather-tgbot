@@ -1,30 +1,99 @@
 const TelegramBot = require('node-telegram-bot-api');
 const weather = require('openweather-apis');
 
-/* CONFIGURE WEATHER*/
-weather.setLang('en'); //Language
+/* Telegram side
+DESCRIPTION
+This is an open source bot which sends current weather for you. Made by kaikkitietokoneista.net/bots.
 
-weather.setCity('Helsinki'); //City
+ABOUT
+I can send current weather for you.
+
+BOTPIC
+botpic.jpg
+
+CREATE Commands to auto complete
+weather - choose city from a list
+----------------------------------------------------------
+*/
+
+/* CONFIGURE WEATHER*/
+weather.setLang('en');
+
+var city = 'Helsinki';
 
 weather.setUnits('metric');
 
-weather.setAPPID('OPENWEATHER_APPID'); //Get your own appid from openweather
+weather.setAPPID('');
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = 'TELEGRAM BOT TOKEN';
+const token = '';
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
+bot.onText(/\/weather (.+)/, (msg, match) => {
+
+  const city = match[1]; // the captured "city"
+
+  weather.setCity(city);
+
+  weather.getAllWeather(function(err, json){
+    if(err) throw (err);
+    //console.log(json);
+
+    if (json.cod == "404") {
+      bot.sendMessage(msg.chat.id, "City not found. ");
+    } else {
+      //var imgurl = 'http://openweathermap.org/img/w/' + json.weather[0].icon + '.png';
+      //bot.sendPhoto(msg.chat.id, imgurl)
+
+      /* icon to emoji */
+      if (json.weather[0].icon == "01d") {
+        var weatheremoji = '🌞';
+      }
+      else if (json.weather[0].icon == "02d" || "02n") {
+        var weatheremoji = '⛅';
+      }
+      else if (json.weather[0].icon == "03d" || "03n") {
+        var weatheremoji = '☁️';
+      }
+      else if (json.weather[0].icon == "04d"|| "04n") {
+        var weatheremoji = '☁️';
+      }
+      else if (json.weather[0].icon == "09d" || "09n") {
+        var weatheremoji = '🌧️';
+      }
+      else if (json.weather[0].icon == "10d" || "10n") {
+        var weatheremoji = '🌧️';
+      }
+      else if (json.weather[0].icon == "11d" || "11n") {
+        var weatheremoji = '⛈️';
+      }
+      else if (json.weather[0].icon == "13d" || "13n") {
+        var weatheremoji = '❄️';
+      }
+      else if (json.weather[0].icon == "50d" || "50n") {
+        var weatheremoji = '🌫️';
+      }
+
+      bot.sendMessage(msg.chat.id, "City: " + city + "\n_____________________\nTemperature: " + json.main.temp + "°C🌡️\n_____________________\nDescription: " + json.weather[0].description + weatheremoji + "\n_____________________\nHumidity: " + json.main.humidity + "%" + "\n_____________________\nPressure: " + json.main.pressure + " hPa" + "\n_____________________\nWind: " + json.wind.speed + "m/s💨\n_____________________");
+    }
+  });
+});
+
+//Vaihda onText iin tämä
 bot.on('message', (msg) => {
 
-  var command = "/weather";
+  var command = "start";
   if (msg.text.toString().toLowerCase().includes(command)) {
-    weather.getSmartJSON(function(err, json){
-      if(err) console.log(err);
-      console.log(json);
-      bot.sendMessage(msg.chat.id, "Temperature: " + json.temp + "°C\nDescription: " + json.description + "\nHumidity: " + json.humidity + "%" + "\nPressure: " + json.pressure + " hPa");
+    bot.sendMessage(msg.chat.id, "This is an open source bot which tells you the current weather. This bot is made by kaikkitietokoneista.net/bots. You can find the source code of this bot in https://github.com/kaikkitietokoneista/weather-tgbot. \n\nCommands:\n/weather <cityname> - gives you the current weather in a chosen city\n/weather - gives you a list of the available cities");
+  }
+  var command = "/weather";
+  if (msg.text.toString().toLowerCase() == command) {
+    bot.sendMessage(msg.chat.id, "Choose your city from a list or send it hier with syntax /weather yourcity.", {
+      "reply_markup": {
+        "keyboard": [["/weather Helsinki"], ["/weather New York"], ["/weather Berlin"], ["/weather Sydney"], ["/weather London"], ["/weather Beijing"], ["/weather Tokyo"], ["/weather Johannesburg"], ["/weather Cairo"]]
+      }
     });
   }
-
 });
