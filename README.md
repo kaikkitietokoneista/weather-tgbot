@@ -7,7 +7,7 @@ I have a working bot in telegram with this code. You can go to chat with it in a
 
 ## Installation
 
-You must install Node.JS before we start.
+You must install Node.JS at first.
 
 
 ```console
