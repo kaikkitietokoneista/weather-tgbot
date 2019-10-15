@@ -41,6 +41,9 @@ bot.onText(/\/weather (.+)/, (msg, match) => {
     if(err) throw (err);
     //console.log(json);
 
+    if (json.cod == "429") {
+      bot.sendMessage(msg.chat.id, "We have reached our API limit of current minute. 😔");
+    }
     if (json.cod == "404") {
       bot.sendMessage(msg.chat.id, "City not found. ");
     } else {
