@@ -45,7 +45,7 @@ bot.onText(/\/weather (.+)/, (msg, match) => {
       bot.sendMessage(msg.chat.id, "We have reached our API limit of current minute. 😔");
     }
     if (json.cod == "404") {
-      bot.sendMessage(msg.chat.id, "City not found. ");
+      bot.sendMessage(msg.chat.id, "City not found. 🧐");
     } else {
       //var imgurl = 'http://openweathermap.org/img/w/' + json.weather[0].icon + '.png';
       //bot.sendPhoto(msg.chat.id, imgurl)
