@@ -80,7 +80,6 @@ bot.onText(/\/weather (.+)/, (msg, match) => {
       }
 
       bot.sendMessage(msg.chat.id, "City: " + city + "\nTemperature: " + json.main.temp + "°C🌡\nDescription: " + json.weather[0].description + weatheremoji + "\nHumidity: " + json.main.humidity + "%" + "\nPressure: " + json.main.pressure + " hPa" + "\nWind: " + json.wind.speed + "m/s💨\nCountry: " + json.sys.country);
-      console.log(json);
     }
   });
 });
