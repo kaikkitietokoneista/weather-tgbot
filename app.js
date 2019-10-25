@@ -23,10 +23,10 @@ var city = 'Helsinki';
 
 weather.setUnits('metric');
 
-weather.setAPPID('298494c98f3b5fe773fb2b7d6be917db');
+weather.setAPPID('');
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = '678607020:AAEc8UfL1s-CjuaWHVdUc0W77an-7eeiJ0Q';
+const token = '';
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
