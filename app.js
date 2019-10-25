@@ -139,13 +139,14 @@ bot.onText(/\/weather@ktweather_bot (.+)/, (msg, match) => {
 
 
 bot.on('message', (msg) => {
+  console.log(msg);
 
   //Lisää /weather Helsinki komennot tähän ja käyttämään tai (||) vertailijaa
-  if (msg.text.toString().toLowerCase().includes("/start" || "/sart@ktweather_bot")) {
-    bot.sendMessage(msg.chat.id, "This is an open source bot which tells you the current weather. This bot is made by kaikkitietokoneista.net/bots. You can find the source code of this bot in https://github.com/kaikkitietokoneista/weather-tgbot. \n\nCommands:\n/weather <cityname> - gives you the current weather in a chosen city\n/weather - gives you a list of the available cities");
+  if (msg.text.toString().toLowerCase().includes("/start" || "/start@ktweather_bot")) {
+    bot.sendMessage(msg.chat.id, "This is an open source bot which tells you the current weather. This bot is made by kaikkitietokoneista.net/bots. You can view the source code of this bot in https://github.com/kaikkitietokoneista/weather-tgbot. \n\nCommands:\n/weather <cityname> - gives you the current weather in a chosen city\n/weather - gives you a list of the available cities");
   }
   if (msg.text.toString().toLowerCase() == "/weather" || "/weather@ktweather_bot") {
-    bot.sendMessage(msg.chat.id, "Choose your city from a list or send it hier with syntax /weather yourcity.", {
+    bot.sendMessage(msg.chat.id, "Choose your city from a list or send it to here with syntax /weather yourcity.", {
       "reply_markup": {
         "keyboard": [["/weather Helsinki"], ["/weather New York"], ["/weather Berlin"], ["/weather Sydney"], ["/weather London"], ["/weather Beijing"], ["/weather Tokyo"], ["/weather Johannesburg"], ["/weather Cairo"]]
       }
