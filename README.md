@@ -31,3 +31,7 @@ Then you need to copy app.js file and run it with command.
 node app.js
 
 ```
+
+## To do
+
+1. Fix code to use || when or
