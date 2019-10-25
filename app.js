@@ -139,8 +139,6 @@ bot.onText(/\/weather@ktweather_bot (.+)/, (msg, match) => {
 
 
 bot.on('message', (msg) => {
-  console.log(msg);
-
   //Lisää /weather Helsinki komennot tähän ja käyttämään tai (||) vertailijaa tai vaihda kaikki nämä onText iin
   if (msg.text.toString().toLowerCase().includes("/start" || "/start@ktweather_bot")) {
     bot.sendMessage(msg.chat.id, "This is an open source bot which tells you the current weather. This bot is made by kaikkitietokoneista.net/bots. You can view the source code of this bot in https://github.com/kaikkitietokoneista/weather-tgbot. \n\nCommands:\n/weather <cityname> - gives you the current weather in a chosen city\n/weather - gives you a list of the available cities");
