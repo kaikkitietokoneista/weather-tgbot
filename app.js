@@ -23,10 +23,10 @@ var city = 'Helsinki';
 
 weather.setUnits('metric');
 
-weather.setAPPID('OPENWEATHERMAP_APPID');
+weather.setAPPID('');
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = 'TELEGRAM_TOKEN';
+const token = '';
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
@@ -88,10 +88,10 @@ bot.on('message', (msg) => {
   console.log(msg);
 
   //Lisää /weather Helsinki komennot tähän ja käyttämään tai (||) vertailijaa
-  if (msg.text.toString().toLowerCase().includes("/start" || "/start@ktweather_bot")) {
+  if (msg.text.toString().toLowerCase() == "/start" || msg.text.toString().toLowerCase() == "/start@ktweather_bot") {
     bot.sendMessage(msg.chat.id, "This is an open source bot which tells you the current weather. This bot is made by kaikkitietokoneista.net/bots. You can view the source code of this bot in https://github.com/kaikkitietokoneista/weather-tgbot. \n\nCommands:\n/weather <cityname> - gives you the current weather in a chosen city\n/weather - gives you a list of the available cities");
   }
-  if (msg.text.toString().toLowerCase() == "/weather") {
+  if (msg.text.toString().toLowerCase() == "/weather" || msg.text.toString().toLowerCase() ==  "/weather@ktweather_bot") {
     bot.sendMessage(msg.chat.id, "Choose your city from a list or send it to here with syntax /weather yourcity.", {
       "reply_markup": {
         "keyboard": [["/weather Helsinki"], ["/weather New York"], ["/weather Berlin"], ["/weather Sydney"], ["/weather London"], ["/weather Beijing"], ["/weather Tokyo"], ["/weather Johannesburg"], ["/weather Cairo"]]
