@@ -1,13 +1,13 @@
 # weather-tgbot
-Open source weather bot for telegram. Made by kaikkitietokoneista.net/bots.
+Avoimen lähdekoodin sääbotti Telegramiin.
 
 ## Demo
 
-I have a working bot in telegram with this code. You can go to chat with it in an url http://t.me/ktweather_bot.
+Toimiva versio botista toimii osoitteessa http://t.me/ktweather_bot.
 
-## Installation
+## Asennus
 
-You must install Node.JS at first.
+Sinun tulee asentaa Node.JS ja sen paketinhallintatyökalu npm aivan ensiksi.
 
 
 ```console
@@ -16,7 +16,7 @@ apt install npm
 
 ```
 
-Install dependencies.
+Nyt voit asentaa vaaditut paketit allaolevilla komennoilla.
 
 
 ```console
@@ -25,13 +25,9 @@ npm install node-telegram-bot-api
 
 ```
 
-Then you need to copy app.js file and run it with command.
+Viimeisenä kopioi koodi app.js:stä omaan app.js-tiedostoon ja käynnistä botti.
 
 ```console
 node app.js
 
 ```
-
-## To do
-
-1. Fix code to use || when or
