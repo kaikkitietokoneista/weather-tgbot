@@ -1,0 +1,29 @@
+{
+  "name": "weather-tgbot",
+  "version": "1.0.0",
+  "description": "Wather bot to the Telegram",
+  "main": "app.js",
+  "scripts": {
+    "test": "node .",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaikkitietokoneista/weather-tgbot.git"
+  },
+  "keywords": [
+    "Weather",
+    "Bot",
+    "Telegram"
+  ],
+  "author": "Kaikkitietokoneista",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/kaikkitietokoneista/weather-tgbot/issues"
+  },
+  "homepage": "https://github.com/kaikkitietokoneista/weather-tgbot#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.50.0",
+    "openweather-apis": "^4.3.1"
+  }
+}

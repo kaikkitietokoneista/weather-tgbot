@@ -1,5 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const weather = require('openweather-apis');
+const fs = require('fs');
 
 /* Telegram side
 DESCRIPTION
@@ -16,19 +17,20 @@ weather - choose city from a list
 ----------------------------------------------------------
 */
 
-/* CONFIGURE WEATHER*/
+
+const config = JSON.parse(fs.readFileSync('./config.json',
+            {encoding:'utf8', flag:'r'}));
+
 weather.setLang('en');
 
 var city = 'Helsinki';
 
 weather.setUnits('metric');
 
-weather.setAPPID('');
+weather.setAPPID(config.openweatherapikey);
 
-// replace the value below with the Telegram token you receive from @BotFather
-const token = '';
+const token = config.telegrambotapikey;
 
-// Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
 bot.onText(/\/weather (.+)/, (msg, match) => {

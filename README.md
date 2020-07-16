@@ -11,7 +11,7 @@ Sinun tulee asentaa Node.JS ja sen paketinhallintatyökalu npm aivan ensiksi.
 
 
 ```console
-apt install nodejs 
+apt install nodejs
 apt install npm
 
 ```
@@ -25,9 +25,14 @@ npm install node-telegram-bot-api
 
 ```
 
-Viimeisenä kopioi koodi app.js:stä omaan app.js-tiedostoon ja käynnistä botti.
+Kopioi ohjelmisto:
 
 ```console
-node app.js
+
+git clone https://github.com/kaikkitietokoneista/weather-tgbot
 
 ```
+
+## Konfigurointi
+
+Aseta API-avaimet tiedostossa `config.json` saadaksesi botti toimintaan.
