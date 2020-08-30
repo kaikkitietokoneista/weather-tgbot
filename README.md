@@ -1,3 +1,7 @@
+# SIIRTYNYT
+
+Siirretty https://github.com/kaikkitietokoneista/Omenahelper
+
 # weather-tgbot
 Avoimen lähdekoodin sääbotti Telegramiin.
 
